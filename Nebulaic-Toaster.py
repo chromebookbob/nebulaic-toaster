@@ -1,7 +1,9 @@
 import random
-
+uranium = 7
+scrap = 20
+missiles = 5
 def starnear(name, computer_name):
-	stars = [star1]
+	stars = [star1, star2, star3, star4, star5]
 	random.choice(stars)(name, computer_name)
 	
 def starfar(name, computer_name):
@@ -12,9 +14,21 @@ def coordinates():
 	ac = random.uniform(-60, 60)
 	bc = random.uniform(-60, 60)
 	cc = random.uniform(-60, 60)
-	
-	
 	return u" %d\xb0 %d' %d\" " % (ac, bc, cc)
+	
+def uranium_store(add, minus):
+	global uranium
+	uranium += add
+	uranium = uranium - minus
+	if uranium < 4:
+		return "DANGER: %d URANIUM REMAINING" % uranium
+	elif uranium >= 4:
+		return "%d" % uranium	
+def scrap_store(add, minus):
+	global scrap
+	scrap += add
+	scrap -= minus
+	return scrap		
 	
 def star():
 	star_list = ["ACAMAR", "ACHERNAR", "Achird", "ACRUX", "Acubens", "ADARA", "Adhafera", "Adhil", "AGENA", "Ain-al-Rami", "Ain", "Aladfar", "Alathfar", "Albaldah", "Albali", "ALBIREO", "Alchiba", "ALCOR", "ALCYONE", "ALDEBARAN", "ALDERAMIN", "Aldhibah", "Alfecca-Meridiana", "Alfirk", "ALGENIB", "ALGIEBA", "ALGOL", "Algorab", "ALHENA", "ALIOTH", "ALKAID", "Alkalurops", "Alkes", "Alkurhah", "ALMAAK", "ALNAIR", "ALNATH", "ALNILAM", "ALNITAK", "Alniyat", "Alniyat", "ALPHARD", "ALPHEKKA", "ALPHERATZ", "Alrai", "Alrisha", "Alsafi", "Alsciaukat", "ALSHAIN", "Alshat", "Alsuhail", "ALTAIR", "Altarf", "Alterf", "Aludra", "Alula-Australis", "Alula-Borealis", "Alya", "Alzirr", "Ancha", "Angetenar", "ANKAA", "Anser", "ANTARES", "ARCTURUS", "Arkab-Posterior", "Arkab-Prior", "ARNEB", "Arrakis", "Ascella", "Asellus Australis", "Asellus-Borealis", "Asellus-Primus", "Asellus-Secondus", "Asellus-Tertius", "Asterope", "Atik", "Atlas", "Auva", "Avior", "Azelfafage", "Azha", "Azmidiske", "Baham", "Baten Kaitos", "Becrux", "Beid", "BELLATRIX", "BETELGEUSE", "Botein", "Brachium", "CANOPUS", "CAPELLA", "Caph", "CASTOR", "Cebalrai", "Celaeno", "Chara", "Chort", "COR-CAROLI", "Cursa", "Dabih", "DENEB", "DENEBOLA", "Dheneb", "Diadem", "DIPHDA", "Double-Double-(7051)", "Dschubba", "Dsiban", "DUBHE", "Ed-Asich", "Electra", "ELNATH", "ENIF", "ETAMIN", "FOMALHAUT", "Fornacis", "Fum-al-Samakah", "Furud", "Gacrux", "Gianfar", "Gienah-Cygni", "Gienah-Ghurab", "Gomeisa", "Gorgonea-Quarta", "Gorgonea-Secunda", "Gorgonea-Tertia", "Graffias", "Grafias", "Grumium", "HADAR", "Haedi", "HAMAL", "Hassaleh", "Head-of-Hydrus", "Herschel's-Garnet Star", "Heze", "Hoedus-II", "Homam", "Hyadum-I", "Hyadum-II", "IZAR", "Jabbah", "Kaffaljidhma", "Kajam", "KAUS-AUSTRALIS", "Kaus-Borealis", "Kaus-Meridionalis", "Keid", "Kitalpha", "KOCAB", "Kornephoros", "Kraz", "Kuma", "Lesath", "Maasym", "Maia", "Marfak", "Marfak", "Marfic", "Marfik", "MARKAB", "Matar", "Mebsuta", "MEGREZ", "Meissa", "Mekbuda", "Menkalinan", "MENKAR", "Menkar", "Menkent", "Menkib", "MERAK", "Merga", "Merope", "Mesarthim", "Metallah", "Miaplacidus", "Minkar", "MINTAKA", "MIRA", "MIRACH", "Miram", "MIRPHAK", "MIZAR", "Mufrid", "Muliphen", "Murzim", "Muscida", "Muscida", "Muscida", "Nair-al-Saif", "Naos", "Nash", "Nashira", "Nekkar", "NIHAL", "Nodus-Secundus", "NUNKI", "Nusakan", "Peacock", "PHAD", "Phaet", "Pherkad Minor", "Pherkad", "Pleione", "Polaris-Australis", "POLARIS", "POLLUX", "Porrima", "Praecipua", "Prima Giedi", "PROCYON", "Propus", "Propus", "Propus", "Rana", "Ras-Elased-Australis", "Ras-Elased-Borealis", "RASALGETHI", "RASALHAGUE", "Rastaban", "REGULUS", "Rigel-Kentaurus", "RIGEL", "Rijl-al-Awwa", "Rotanev", "Ruchba", "Ruchbah", "Rukbat", "Sabik", "Sadalachbia", "SADALMELIK", "Sadalsuud", "Sadr", "SAIPH", "Salm", "Sargas", "Sarin", "Sceptrum", "SCHEAT", "Secunda-Giedi", "Segin", "Seginus", "Sham", "Sharatan", "SHAULA", "SHEDIR", "Sheliak", "SIRIUS", "Situla", "Skat", "SPICA", "Sterope-II", "Sualocin", "Subra", "Suhail-al-Muhlif", "Sulafat", "Syrma", "Tabit-(1543)", "Tabit-(1544)", "Tabit-(1552)", "Tabit-(1570)", "Talitha", "Tania-Australis", "Tania-Borealis", "TARAZED", "Taygeta", "Tegmen", "Tejat-Posterior", "Terebellum", "Terebellum", "Terebellum", "Terebellum", "Thabit", "Theemim", "THUBAN", "Torcularis-Septentrionalis", "Turais", "Tyl", "UNUKALHAI", "VEGA", "VINDEMIATRIX", "Wasat", "Wezen", "Wezn", "Yed-Posterior", "Yed-Prior", "Yildun", "Zaniah", "Zaurak", "Zavijah", "Zibal", "Zosma", "Zuben-Elakrab, Zuben-Elakribi, Zuben-Elgenubi, Zuben-Elschemali"]
@@ -31,9 +45,9 @@ def alien():
 	return random.choice(aliens)
 	
 def armoury(add, fire):
-	missiles = 5
+	global missiles
 	missiles += add
-	missiles = missiles - fire
+	missiles -= fire
 	if missiles > 0:
 		return missiles
 	else:
@@ -75,9 +89,13 @@ def jump(name, computer_name):
 	answer = raw_input(">")
 	
 	if answer == "1":
+		uranium_store(0, 1)
 		starnear(name, computer_name)
 	elif answer == "2":
+		uranium_store(0, 1)
 		starfar(name, computer_name)
+	elif answer == "3":
+		quit()	
 	else:
 		print "I dont understand."
 		jump(name, computer_name)		
@@ -89,6 +107,13 @@ def start():
 	print "By the way, you can give me a name"
 	computer_name = raw_input("What do you want to call me?")
 	print "From now on I shall be called %s." % computer_name
+	print "Your ship is fuelled by uranium."
+	print "One is used every jump."
+	print "You currently have %s uranium." % uranium_store(0, 0)
+	print "The currency this ship uses is scrap."
+	print "You have %d scrap" % scrap_store(20, 0)
+	print "We have one weapon on this ship: Missile Launcher"
+	print "You have %d missiles in the armoury." % armoury(20, 0)
 	print " We will now go off, into the abyss..."
 	print "If you want to exit at any time just enter 3"
 	jump(name, computer_name)
@@ -97,12 +122,14 @@ def start():
 
 		
 def star1(name, computer_name):
+	print "You have %s uranium left." % uranium
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "We are in orbit around the star %s." % star()
 	action(name, computer_name)
 	
 def star2(name, computer_name):
+	print "You have %s uranium left." % uranium
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "I couldn't get us close enough to orbit around %s." % star()
@@ -121,18 +148,21 @@ def star2(name, computer_name):
 		jump()	
 	
 def star3(name, computer_name):
+	print "You have %s uranium left." % uranium
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "We are in orbit around the star %s." % star()
 	action(name, computer_name)
 
 def star4(name, computer_name):
+	print "You have %s uranium left." % uranium
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "There are no stars around here %s." % name
 	action(name, computer_name)
 
 def star5(name, computer_name):
+	print "You have %s uranium left." % uranium
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "We are in orbit around the star %s." % star()
@@ -144,18 +174,21 @@ def stara(name, computer_name):
 	action(name, computer_name)
 	
 def starb(name, computer_name):
+	print "You have %s uranium left." % uranium
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "We are in orbit around the star %s." % star()
 	action(name, computer_name)
 
 def starc(name, computer_name):
+	print "You have %s uranium left." % uranium
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "We are in orbit around the star %s." % star()
 	action(name, computer_name)
 		
 def stard(name, computer_name):
+	print "You have %s uranium left." % uranium
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "I cant give you any accurate coordinates right now, %s, we are in deep space." % name
 	print "I managed to find our nearest star: %s." % star()
@@ -177,18 +210,14 @@ def action1(name, computer_name):
 		quit() 	
 	elif answer == "2":
 		print "How many missiles do you want to fire?"
-		print "1. 1 missile"
-		print "2. 2 missiles"
-		print "3. 3 missiles"
-		print "4. 4 missiles"
-		print "5. 5 missiles"
+		print "Please enter a number from 1 - %s" % missiles
 		answer = int(raw_input(">"))
 		if answer < 2:
 			armoury(0, answer)
 			print "Your missiles did not perform enough damage."
 			print "Your ship was destroyed."
 			quit()
-		elif 2 <= answer < 6:
+		elif 2 <= answer:
 			armoury(0, answer)
 			number = random.uniform(1, 7)
 			print "You destroyed the ship!"
@@ -217,7 +246,21 @@ def action3(name, computer_name):
 	print "WE HAVE BEEN HIT"
 def action4(name, computer_name):	
 	print "You discovered a piece of uranium, do you want to add it to the inventory?"
-		
+	print "1. yes"
+	print "2. no"
+	answer = raw_input(">")
+	if answer == "1":
+		print "Collecting uranium..."
+		uranium_store(1, 0)
+		print "You now have %s uranium. Enough for %s more jumps." % (uranium_store(0,0), uranium_store(0,0))
+	elif answer == "2":
+		print "Uranium not collected."
+		jump()
+	elif answer == "3":
+		quit()
+	else:
+		print " I didn't catch that, restarting sequence."
+		action4(name, computer_name)				
 def quit():
 	print "Are you sure you want to quit?"
 	print "1. Yes"
