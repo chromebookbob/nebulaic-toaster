@@ -22,19 +22,45 @@ def star():
 
 #print " Your coordinates are: %s Our nearest star is: %s " % (coordinates(), star())
 
-def action():
+def action(name, computer_name):
 	actions = [action1, action2, action3, action4]
-	random.choice(actions)()
+	random.choice(actions)(name, computer_name)
 
+def alien():
+	aliens = ["Umgah", "Drej", "Eldila", "Zoni", "Blastaar", "Shoggoths", "Govorom", "Medusan", "Tholian", "Petrosapien", "Oswaft", "Acanti"]
+	return random.choice(aliens)
+	
+def armoury(add, fire):
+	missiles = 5
+	missiles += add
+	missiles = missiles - fire
+	if missiles > 0:
+		return missiles
+	else:
+		return "NO MISSILES"		
 
 def begin():
 	print "-" * 20
 	print " ",
 	print "*" * 16
-	print "  NEBULAIC TOASTER"
+	print " NEBULAIC TOASTER"
 	print " ",
 	print "*" * 16
 	print "-" * 20
+	print """
+	   
+                       0)__/... \_
+                      00)__)  .___)
+     ___              _0__)\_/ OOO/`':.
+    0)_^'-._    __..-'`:  \\ | / ::  \\ o`:
+    0)_\ \~_..-': \\ \\   :  \\|/   ::  |   \\
+        \ /      : | |  :    :  ::  /  _./>-
+         (__ ))): /_/____.))_____//.-'`
+          7 7~~'\"\"\"            7 7
+          L_L                 / /
+         0) ^'-.__            |_|
+         0)__.-'             0) ^'-.__
+                             0)__.-'"""
 	print """
 	  STARTING
 	  """
@@ -74,7 +100,7 @@ def star1(name, computer_name):
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "We are in orbit around the star %s." % star()
-	action()
+	action(name, computer_name)
 	
 def star2(name, computer_name):
 	print "Hello %s, it's %s here." % (name, computer_name)
@@ -82,12 +108,12 @@ def star2(name, computer_name):
 	print "I couldn't get us close enough to orbit around %s." % star()
 	print "Would you like to jump again?"
 	print "1. Yes"
-	print "2. No
+	print "2. No"
 	answer = raw_input(">")
 	if answer == "1":
 		jump() 
 	elif answer == "2":
-		action()
+		action(name, computer_name)
 	elif answer == "3":
 		quit()	
 	else:
@@ -98,42 +124,100 @@ def star3(name, computer_name):
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "We are in orbit around the star %s." % star()
-	action()
+	action(name, computer_name)
 
 def star4(name, computer_name):
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "There are no stars around here %s." % name
-	action()
+	action(name, computer_name)
 
 def star5(name, computer_name):
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "We are in orbit around the star %s." % star()
-	action()
+	action(name, computer_name)
 
 def stara(name, computer_name):
 	print "REBOOTING INTO SAFE MODE"
 	print "-" * 20 
-	action()
+	action(name, computer_name)
 	
 def starb(name, computer_name):
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "We are in orbit around the star %s." % star()
-	action()
+	action(name, computer_name)
 
 def starc(name, computer_name):
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "Our current coordinates are: %s." % coordinates()
 	print "We are in orbit around the star %s." % star()
-	action()
+	action(name, computer_name)
 		
 def stard(name, computer_name):
 	print "Hello %s, it's %s here." % (name, computer_name)
 	print "I cant give you any accurate coordinates right now, %s, we are in deep space." % name
 	print "I managed to find our nearest star: %s." % star()
-	action()		
+	action(name, computer_name)	
+	
+def action1(name, computer_name):
+	print "We are recieving a transmission from a %s ship, %s." % (alien(), name)
+	print "INCOMING TRANSMISSION: Surrender Your computer to us or we will blast you into oblivion."
+	print "You have 4 options, %s, choose wisely." % name
+	print "1. Surrender the ships computer"
+	print "2. Fire the %d remaining missiles in your armoury" % armoury(0, 0)
+	print "3. QUIT"
+	print "4. Attempt to Jump"
+	answer = raw_input(">")
+	if answer == "1":
+		print "You surrendered the ship's computer."
+		print "You drift into space for eternity."
+		raw_input(">")
+		quit() 	
+	elif answer == "2":
+		print "How many missiles do you want to fire?"
+		print "1. 1 missile"
+		print "2. 2 missiles"
+		print "3. 3 missiles"
+		print "4. 4 missiles"
+		print "5. 5 missiles"
+		answer = int(raw_input(">"))
+		if answer < 2:
+			armoury(0, answer)
+			print "Your missiles did not perform enough damage."
+			print "Your ship was destroyed."
+			quit()
+		elif 2 <= answer < 6:
+			armoury(0, answer)
+			number = random.uniform(1, 7)
+			print "You destroyed the ship!"
+			print "They left %d missiles behind!" % number
+			armoury(number, 0)
+		else:	
+			print "RESTARTING SEQUENCE"
+			action1()
+	elif answer == "3":
+		print "Quitting..."
+		quit()
+	elif answer == "4":
+		attempt = ["yes", "no"]
+		choice = random.choice(attempt)
+		if choice == "yes":
+			print "Attempt Succesful. Jumping..."
+			jump(name, computer_name)
+		if choice == "no":		
+			print "Jump insuccessful. Rockets locking on."
+			print "SHIP DESTROYED"
+			quit()
+def action2(name, computer_name):
+	print "Captian."
+
+def action3(name, computer_name):
+	print "WE HAVE BEEN HIT"
+def action4(name, computer_name):	
+	print "You discovered a piece of uranium, do you want to add it to the inventory?"
+		
 def quit():
 	print "Are you sure you want to quit?"
 	print "1. Yes"
