@@ -39,7 +39,7 @@ class Inventory(object):
 
 class Random(object):
 	def starnear(self, name, computer_name):
-		stars = [Stars().star1, Stars().star2, Stars().star3, Stars().star4, Stars().star5, Shops().shop]
+		stars = [Stars().star1, Stars().star2, Stars().star3, Stars().star4, Stars().star5, Shops().shop1]
 		random.choice(stars)(name, computer_name)				
 		
 	def starfar(self, name, computer_name):
@@ -228,13 +228,16 @@ class Stars(object):
 		random_.action(name, computer_name)			
 	
 class Shops(object):
-		
-			
-	def shop(self, name, computer_name):
+
+	def shop1(self, name, computer_name):
 		print "You have %s uranium left." % inventory.uranium_store(0, 0)
 		print "INCOMING TRANSMISSION: DE-SCRAMBLING"
 		print "Welcome, you have stumbled upon a pirate trading station."
 		print "Feel free to browse our wares, just dont try anything funny."
+		self.shop_setup(name, computer_name)
+		
+			
+	def shop_setup(self, name, computer_name):
 		print "-" * 20
 		print "." * 20
 		print "...STOCK LOADING...."
@@ -246,15 +249,15 @@ class Shops(object):
 		print "4. JUMP"
 		answer = raw_input(">")	
 		if answer == "1":
-			self.buy()
+			self.buy(name, computer_name)
 		elif answer == "2":
-			self.sell()
+			self.sell(name, computer_name)
 		elif answer == "3":
 			Setup().quit()
 		elif answer == "4":
 			Setup().jump(name, computer_name)	
 			
-	def buy(self):
+	def buy(self, name, computer_name):
 		print "YOUR INVENTORY:"
 		print "Scrap: %s" % inventory.scrap_store(0, 0)
 		print "Uranium: %s"	% inventory.uranium_store(0, 0)
@@ -282,9 +285,53 @@ class Shops(object):
 				inventory.scrap_store(0, pay)
 				print "Transaction completed."
 				print "You now have %s uranium, and %s scrap" % (inventory.uranium_store(ans, 0), inventory.scrap_store(0, 0))
+				print "Do you want to go back to the shop or jump on?"
+				print "1. Return to shop"
+				print "2. Jump"
+				answer = raw_input(">")
+				if answer == "1":
+					self.shop_setup(name, computer_name)
+				elif answer == "2":
+					setup.jump(name, computer_name)	
+				elif answer == "3":
+					setup.quit()
+				else:
+					print "I do not understand, jumping anyway."
+					setup.jump(name, computer_name)		
+					
+		elif answer == "2":
+			print "How many Missiles (stock: %s) ?" % shop_missiles
+			ans = int(raw_input(">"))
+			if ans > shop_missiles:
+				print "You cannot buy that many, only %s available" % shop_missiles
+				
+			elif ans * price_missiles > inventory.scrap_store(0, 0):
+				print "You don't have enough scrap for that."
+				print "Returning to shop..."
+				self.shop() 
+			else:		
+				pay = price_missiles * ans
+				shop_missiles -= ans
+				inventory.scrap_store(0, pay)
+				print "Transaction completed."
+				print "You now have %s missiles, and %s scrap" % (inventory.missile_store(ans, 0), inventory.missile_store(0, 0))
+				print "Do you want to go back to the shop or jump on?"
+				print "1. Return to shop"
+				print "2. Jump"
+				answer = raw_input(">")
+				if answer == "1":
+					self.shop_setup(name, computer_name)
+				elif answer == "2":
+					setup.jump(name, computer_name)	
+				elif answer == "3":
+					setup.quit()
+				else:
+					print "I do not understand, jumping anyway."
+					setup.jump(name, computer_name)				
+					
 			
 			
-	def sell(self):	
+	def sell(self, name, computer_name):	
 		print "YOUR INVENTORY:"
 		print "Scrap: %s" % random_.scrap_store(0, 0)
 		print "Uranium: %s"	% random_.uranium_store(0, 0)
@@ -293,7 +340,7 @@ class Shops(object):
 class Actions(object):
 	
 	def action1(self, name, computer_name):
-		print "We are recieving a transmission from a %s ship, %s." % (Random().alien(), name)
+		print "We are recieving a transmission from a %s ship, %s." % (random_.alien(), name)
 		print "INCOMING TRANSMISSION: Surrender Your computer to us or we will blast you into oblivion."
 		print "You have 4 options, %s, choose wisely." % name
 		print "1. Surrender the ships computer"
@@ -321,6 +368,8 @@ class Actions(object):
 				print "You destroyed the ship!"
 				print "They left %d missiles behind!" % number
 				inventory.missile_store(number, 0)
+				print "There is nothing left here. Just empty space. Jumping..."
+				Setup().jump(name, computer_name)
 			else:	
 				print "RESTARTING SEQUENCE"
 				action1()
@@ -351,6 +400,8 @@ class Actions(object):
 			print "Collecting uranium..."
 			inventory.uranium_store(1, 0)
 			print "You now have %s uranium. Enough for %s more jumps." % (inventory.uranium_store(0,0), inventory.uranium_store(0,0))
+			print "There is nothing else here, Jumping..."
+			Setup().jump(name, computer_name)
 		elif answer == "2":
 			print "Uranium not collected."
 			Setup().jump(name, computer_name)
