@@ -43,7 +43,7 @@ class Random(object):
 		random.choice(stars)(name, computer_name)				
 		
 	def starfar(self, name, computer_name):
-		stars = [Stars().stara, Stars().starb, Stars().starc, Stars().stard, Shops().shop]
+		stars = [Stars().stara, Stars().starb, Stars().starc, Stars().stard, Shops().shop1]
 		random.choice(stars)(name, computer_name)	
 		
 	def coordinates(self):
@@ -333,10 +333,53 @@ class Shops(object):
 			
 	def sell(self, name, computer_name):	
 		print "YOUR INVENTORY:"
-		print "Scrap: %s" % random_.scrap_store(0, 0)
-		print "Uranium: %s"	% random_.uranium_store(0, 0)
-		print "Missiles: %s" % random_.missile_store(0, 0)		
+		print "Scrap: %s" % inventory.scrap_store(0, 0)
+		print "Uranium: %s"	% inventory.uranium_store(0, 0)
+		print "Missiles: %s" % inventory.missile_store(0, 0)	
+		paid_uranium = random.randint(1, 5)
+		paid_missiles = random.randint(1, 6)
+		print "Prices Paid:"
+		print "Uranium: %s scrap"
+		print "Missiles: %s scrap"
+		print "What would you like to sell?"
+		print "1. Uranium"
+		print "2. Missiles" 
+		print "3. QUIT GAME"
+		print "4. Nothing"
+		answer = raw_input(">")
+		if answer == "1":
+			print "How many would you like to sell (%s in inventory)." % inventory.uranium_store(0, 0)
+			ans = int(raw_input(">"))
+			if ans > inventory.uranium_store(0, 0):
+				print "Not enough uranium to sell"
+				print "Returning to shop."
+				self.shop_setup(name, computer_name)
+			else:
+				paid = paid_uranium * ans
+				inventory.scrap_store(paid, 0)
+				inventory.uranium_store(0, ans)
+				print "TRANSACTION COMPLETE"
+				print "Inventory:"
+				print "Uranium: %s" % inventory.uranium_store(0, 0)
+				print "Scrap: %s" % inventory.scrap_store(0, 0)
+				print "Missiles: %s" % inventory.missile_store(0, 0)
+				print "1. Return to shop."
+				print "2. Jump"
+				print "3. QUIT"
+				answ = raw_input(">")
+				if answ == "1":
+					self.shop_setup(name, computer_name)
+				elif answ == "2":
+					setup.jump(name, computer_name)
+				elif answ == "3":
+					setup.quit()
+				else:
+					print "Does not compute, jumping anyway.."
+					setup.jump(name, computer_name)
+								
+					
 				
+						
 class Actions(object):
 	
 	def action1(self, name, computer_name):
