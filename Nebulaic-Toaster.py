@@ -39,11 +39,11 @@ class Inventory(object):
 
 class Random(object):
 	def starnear(self, name, computer_name):
-		stars = [Stars().star1, Stars().star2, Stars().star3, Stars().star4, Stars().star5]
+		stars = [Stars().star1, Stars().star2, Stars().star3, Stars().star4, Stars().star5, Shops().shop]
 		random.choice(stars)(name, computer_name)				
 		
 	def starfar(self, name, computer_name):
-		stars = [Stars().stara, Stars().starb, Stars().starc, Stars().stard]
+		stars = [Stars().stara, Stars().starb, Stars().starc, Stars().stard, Shops().shop]
 		random.choice(stars)(name, computer_name)	
 		
 	def coordinates(self):
@@ -62,6 +62,7 @@ class Random(object):
 		choice = random.choice(actions)
 		actions.remove(choice)
 		choice(name, computer_name)
+	
 	def alien(self):
 		aliens = ["Umgah", "Drej", "Eldila", "Zoni", "Blastaar", "Shoggoths", "Govorom", "Medusan", "Tholian", "Petrosapien", "Oswaft", "Acanti"]
 		return random.choice(aliens)
@@ -225,11 +226,65 @@ class Stars(object):
 		print "I cant give you any accurate coordinates right now, %s, we are in deep space." % name
 		print "I managed to find our nearest star: %s." % random_.star()
 		random_.action(name, computer_name)			
+	
+class Shops(object):
+		
 			
+	def shop(self, name, computer_name):
+		print "You have %s uranium left." % inventory.uranium_store(0, 0)
+		print "INCOMING TRANSMISSION: DE-SCRAMBLING"
+		print "Welcome, you have stumbled upon a pirate trading station."
+		print "Feel free to browse our wares, just dont try anything funny."
+		print "-" * 20
+		print "." * 20
+		print "...STOCK LOADING...."
+		print "." * 20
+		print "-" * 20
+		print "1. BUY"
+		print "2. SELL"	
+		answer = raw_input(">")	
+		if answer == "1":
+			self.buy()
+		elif answer == "2":
+			self.sell()
+		elif answer == "3":
+			Setup().quit()
+			
+	def buy(self):
+		print "YOUR INVENTORY:"
+		print "Scrap: %s" % Inventory().scrap_store(0, 0)
+		print "Uranium: %s"	% Inventory().uranium_store(0, 0)
+		print "Missiles: %s" % Inventory().missile_store(0, 0)
+		shop_uranium = random.randint(0, 15)
+		price_uranium = random.randint(2, 5)
+		shop_missiles = random.randint(0, 15)
+		price_missiles = random.randint(3, 9) 
+		print "What would you like to buy?"
+		print "1. Uranium (stock: %s),  %s scrap" % (shop_uranium, price_uranium)
+		print "2. Missiles (stock: %s), %s scrap" % (shop_missiles, price_missiles)
+		answer = raw_input(">")
+		if answer == "1":
+			print "How many Uranium (stock: %s) ?" % shop_uranium
+			ans = int(raw_input(">"))
+			if ans > shop_uranium:
+				print "You cannot buy that many, only %s available" % shop_uranium
+			else:		
+				pay = price_uranium * ans
+				shop_uranium -= ans
+				Inventory().scrap_store(0, ans)
+				print "Transaction completed."
+				print "You now have %s uranium, and %s scrap" % (Inventory().uranium_store(0, 0), Inventory().scrap_store(0, 0))
+			
+			
+	def sell(self):	
+		print "YOUR INVENTORY:"
+		print "Scrap: %s" % random_.scrap_store(0, 0)
+		print "Uranium: %s"	% random_.uranium_store(0, 0)
+		print "Missiles: %s" % random_.missile_store(0, 0)		
+				
 class Actions(object):
 	
 	def action1(self, name, computer_name):
-		random_.remove_action("Action().action1")
 		print "We are recieving a transmission from a %s ship, %s." % (Random().alien(), name)
 		print "INCOMING TRANSMISSION: Surrender Your computer to us or we will blast you into oblivion."
 		print "You have 4 options, %s, choose wisely." % name
@@ -245,7 +300,7 @@ class Actions(object):
 			Setup().quit() 	
 		elif answer == "2":
 			print "How many missiles do you want to fire?"
-			print "Please enter a number from 1 - %s" % missiles
+			print "Please enter a number from 1 - %s" % Inventory().missile_store(0, 0)
 			answer = int(raw_input(">"))
 			if answer < 2:
 				inventory.missile_store(0, answer)
