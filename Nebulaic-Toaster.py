@@ -17,7 +17,11 @@ class Inventory(object):
 		self.uranium += add
 		self.uranium = self.uranium - minus
 		if self.uranium < 4:
-			return "DANGER: %d URANIUM REMAINING" % self.uranium
+			if self.uranium > 0:
+				return "DANGER: %d URANIUM REMAINING" % self.uranium
+			elif self.uranium == 0:
+				print "You can jump no further."
+				setup.quit()
 		elif self.uranium >= 4:
 			return "%d" % self.uranium	
 	
@@ -376,6 +380,37 @@ class Shops(object):
 				else:
 					print "Does not compute, jumping anyway.."
 					setup.jump(name, computer_name)
+					
+		elif answer == "2":
+			print "How many would you like to sell (%s in inventory)." % inventory.missile_store(0, 0)
+			ans = int(raw_input(">"))
+			if ans > inventory.missile_store(0, 0):
+				print "Not enough missiles to sell"
+				print "Returning to shop."
+				self.shop_setup(name, computer_name)
+			else:
+				paid = paid_missile * ans
+				inventory.scrap_store(paid, 0)
+				inventory.missile_store(0, ans)
+				print "TRANSACTION COMPLETE"
+				print "Inventory:"
+				print "Uranium: %s" % inventory.uranium_store(0, 0)
+				print "Scrap: %s" % inventory.scrap_store(0, 0)
+				print "Missiles: %s" % inventory.missile_store(0, 0)
+				print "1. Return to shop."
+				print "2. Jump"
+				print "3. QUIT"
+				answ = raw_input(">")
+				if answ == "1":
+					self.shop_setup(name, computer_name)
+				elif answ == "2":
+					setup.jump(name, computer_name)
+				elif answ == "3":
+					setup.quit()
+				else:
+					print "Does not compute, jumping anyway.."
+					setup.jump(name, computer_name)
+									
 								
 					
 				
@@ -407,7 +442,7 @@ class Actions(object):
 				Setup().quit()
 			elif 2 <= answer:
 				inventory.missile_store(0, answer)
-				number = random.uniform(1, 7)
+				number = random.randint(1, 7)
 				print "You destroyed the ship!"
 				print "They left %d missiles behind!" % number
 				inventory.missile_store(number, 0)
@@ -459,7 +494,7 @@ random_ = Random()
 stars = Stars()
 actions = Actions()
 setup = Setup()
-setup.begin()	
+	
 		
 
 setup.game()
