@@ -312,7 +312,7 @@ class Shops(object):
 			elif ans * price_missiles > inventory.scrap_store(0, 0):
 				print "You don't have enough scrap for that."
 				print "Returning to shop..."
-				self.shop_setup(name, computer_name) 
+				self.shop() 
 			else:		
 				pay = price_missiles * ans
 				shop_missiles -= ans
@@ -465,23 +465,7 @@ class Actions(object):
 				print "SHIP DESTROYED"
 				Setup().quit()
 	def action2(self, name, computer_name):
-		print "Captian, a ship has been on our radar for the last three jumps."
-		print "I think we are being followed, would you like to take action?"
-		print "1. Yes, infiltrate the ship and disable their engines."
-		print "2. No, jump on and hope they lose track of us."
-		answer = raw_input(">")
-		if answer == "1":
-			infiltrate.setup(name, computer_name)
-			
-		elif answer == "2":
-			print "They just dissapeared, I guess you were right."
-			setup.jump(name, computer_name)	
-		elif answer == "3":
-			setup.quit()
-		else:
-			print "I couldn't catch that."
-			print "I think it would be best if you take a look at this."
-			infiltrate.setup(name, computer_name)	
+		print "Captian."
 	
 	def action3(self, name, computer_name):
 		print "WE HAVE BEEN HIT"
@@ -505,44 +489,12 @@ class Actions(object):
 			print " I didn't catch that, restarting sequence."
 			action4(name, computer_name)			
 				
-	# this next class is the infiltration series of stuff
-class Infiltrate(object):
-		
-	def setup(self, name, computer_name):
-		print "%s, we have a teleporter on board. I have tried to acess their teleporter gate" % name
-		print "without them noticing but there is a passcode."
-		print "You will have to hack into their computer systems and open the firewall."
-		self.hack(name, computer_name)
-		
-	def hack(self, name, computer_name):
-		print "I have managed to get access to an encrypted version of the passcode."
-		print "You will have to unscramble the encryption to acess the teleport."
-		print "You have 7 guesses."
-		password = ["e", "l", "e", "p", "h", "a", "n", "t", ";", "\\", "1", "9", "*", ">", "/", "#"]
-		random.shuffle(password)
-		print ''.join([str(item) for item in password])
-		real = "elephant"
-		guesses = 0
-		answer = raw_input(">")
-		while answer != real and guesses < 7:
-			guesses += 1
-			ggs = 7 - guesses
-			print "Wrong guess, %d left" % ggs
-			answer = raw_input(">")
-		if answer == real:
-			print "You guessed the password!"
-			print "I am teleporting you to the ship now, %s" % name
-			self.teleport(name, computer_name)
-		
-	def teleport(self, name, computer_name):
-		print "We are inside the ship, %s, the engines are to your left."% name				
-				
 inventory = Inventory()	
 random_ = Random()
 stars = Stars()
 actions = Actions()
 setup = Setup()
-infiltrate = Infiltrate()	
+	
 		
 
 setup.game()
