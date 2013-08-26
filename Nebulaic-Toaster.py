@@ -115,7 +115,7 @@ class Setup(object):
 		print "The currency this ship uses is scrap."
 		print "You have %d scrap" % inventory.scrap_store(0, 0)
 		print "We have one weapon on this ship: Missile Launcher"
-		print "You have %d missiles in the missile_store." % inventory.missile_store(0, 0)
+		print "You have %d missiles in the missile store." % inventory.missile_store(0, 0)
 		print " We will now go off, into the abyss..."
 		print "If you want to exit at any time just enter 3"
 		self.jump(name, computer_name)
