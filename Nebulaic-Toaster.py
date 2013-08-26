@@ -1,5 +1,5 @@
 import random
-
+from sys import exit
 				
 	
 
@@ -126,10 +126,14 @@ class Setup(object):
 		print "1. Yes"
 		print "2. No, restart"
 		answer = raw_input(">")
-		if answer == 1:
+		if answer == "1":
 			exit(0)
+		elif answer == "2":
+			Setup().game()
 		else:
-			Setup().game()	
+			print "QUITTING"
+			exit(0)
+				
 	def game(self):
 		self.begin()	
 		self.start()
@@ -535,7 +539,50 @@ class Infiltrate(object):
 			self.teleport(name, computer_name)
 		
 	def teleport(self, name, computer_name):
-		print "We are inside the ship, %s, the engines are to your left."% name				
+		print "We are inside the ship, %s, there are two corridors here."% name			
+		print "1. Left, a long corridor	, eerily silent."
+		print "2. Right, a grumbling can be heard, there is a door quite close."
+		answer = raw_input(">")
+		routes = ["1", "2"]		
+		real = random.choice(routes)
+		if answer == real:
+			if answer == "1":
+				print "The corridoor lights up as you proceed down it."
+				print "%s, this ship has a silent engine, it runs on uranium just like ours." % name
+				self.engine_room(name, computer_name)
+				
+			elif answer == "2":
+				print "You walk to the door, the commotion is coming from further down"
+				print "the corridoor, the door has a label \"ENGINE ROOM\""
+				self.engine_room(name, computer_name)
+				
+		elif answer != real:
+			if answer == "1":
+				print "Your footsteps are loud on the composite floor,"
+				print "suddenly you hear more footsteps and run for a doorway."
+				print "%s, those are the footsteps of the %s." % (name, random_.alien())
+				print "I fear that this is our last goodbye..."
+				print "FFZZZBBBBAANNGWW"
+				print "A light blinds you and you lose all of your senses."
+				setup.quit()
+			elif answer == "2":
+				print "You open the door, the commotion you thought was the engine"
+				print "was actually a room full of %s, they draw their weapons" % random_.alien()
+				print "before you can turn and run they fire."
+				print "You see a blinding light and your life ends."
+				setup.quit()		
+			elif answer == "3":
+				setup.quit()
+			else:
+				print "you see a blinding light, the % race got to you before you could get to them." % random_.alien() 		
+				setup.quit()
+		else:
+			print "you see a blinding light, the % race got to you before you could get to them." % random_.alien() 		
+			setup.quit()	
+			
+	def engine_room(self, name, computer_name):		
+			print "Scanning room for lifeforms."
+			print "The room is clear,%s, you can go in." % name
 				
 inventory = Inventory()	
 random_ = Random()
