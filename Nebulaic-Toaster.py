@@ -426,7 +426,7 @@ class Actions(object):
 		print "INCOMING TRANSMISSION: Surrender Your computer to us or we will blast you into oblivion."
 		print "You have 4 options, %s, choose wisely." % name
 		print "1. Surrender the ships computer"
-		print "2. Fire the %d remaining missiles in your missile_store" % inventory.missile_store(0, 0)
+		print "2. Fire the %d remaining missiles in your missile store" % inventory.missile_store(0, 0)
 		print "3. QUIT"
 		print "4. Attempt to Jump"
 		answer = raw_input(">")
@@ -537,7 +537,48 @@ class Infiltrate(object):
 			print "You guessed the password!"
 			print "I am teleporting you to the ship now, %s" % name
 			self.teleport(name, computer_name)
-		
+		elif answer != real:
+			print "I am afraid you have guessed the password wrong, we cannot teleport across."
+			print "We will just have to hope they don't follow us"
+			print "or we could blow them to smithereens..."
+			print "1. Jump"
+			print "2. Fire Missiles at them"
+			ans = raw_input(">")
+			if ans == "1":
+				Setup().jump(name, computer_name)
+			elif ans == "2":
+				print "Ok, %s, how many missiles do you want to fire" % name
+				
+				print "You have %s missiles in the inventory." % inventory.missile_store(0, 0)
+				print "Enter a number"
+				answer = int(raw_input(">"))
+				if answer <= inventory.missile_store(0, 0):
+					print "Firing %s missiles" % answer
+					if answer >= 4:	
+						print "The other ship is no longer a problem."
+						randu = random.randint(2, 9)
+						randm = random.randint(1, 10)
+						print "Their wreckage contains %d uranium and %d missiles." % (randu, randm)
+						print "COLlECTING"
+						print "We now have %s Uranium and %s missiles" % (inventory.uranium_store(randu, 0), inventory.missile_store(randm, answer))
+						print "Prepare to jump"
+						Setup().jump(name, computer_name)
+					else:
+						print "It wasn't enough, their missiles are locking on."
+						li = ["1", "2"]
+						ra = random.choice(li)
+						if ra == "1":
+							print "System shutting down."
+							print "You drift out of your cabin into the abysss, your head explodes."
+						elif ra == "2":
+							print "We are hurt but not dead, I can repair this while we jump"		
+							Setup().jump(name, computer_name)
+			elif ans == "3":
+				setup.quit()
+			else:
+				print "Not valid input."
+				print "Jumping..."
+				Setup().jump(name, computer_name)					
 	def teleport(self, name, computer_name):
 		print "We are inside the ship, %s, there are two corridors here."% name			
 		print "1. Left, a long corridor	, eerily silent."
