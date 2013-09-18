@@ -286,7 +286,7 @@ class Shops(object):
 			elif ans * price_uranium > inventory.scrap_store(0, 0):
 				print "You don't have enough scrap for that."
 				print "Returning to shop..."
-				self.shop() 
+				self.shop_setup() 
 			else:		
 				pay = price_uranium * ans
 				shop_uranium -= ans
@@ -625,6 +625,28 @@ class Infiltrate(object):
 			print "Scanning room for lifeforms."
 			print "The room is clear,%s, you can go in." % name
 				
+class Battle(object):
+	def atttacked(self, name, computer_name)
+		print "There is a %s ship firing at us" % random_.alien()	
+		print "What do you want to do?"
+		print "1. fire at them"
+		print "2. attempt to jump"
+		print "3. Quit"
+		answer = raw_input(">")
+		if answer == "1":
+			self.fire(name, computer_name)
+	def fire(name, computer_name):
+			print "How many missiles do you want to fire?"
+			print "You have %s missiles." % inventory.missile_store(0, 0)
+			answer = raw_input(">")
+			number = random.randint(2, 6)
+			if answer >= number:
+				print "The ship is no longer locked onto us. They have been destroyed."
+				print "They left behind %s missiles, %s uranium and %s scrap" % (inventory.missile_store(random.randint(0, 5), 0), inventory.uranium_store(random.randint(0, 4), 0), inventory.scrap_store(random.randint(0, 15), 0))
+				
+					
+				
+
 inventory = Inventory()	
 random_ = Random()
 stars = Stars()
