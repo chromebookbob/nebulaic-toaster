@@ -158,28 +158,25 @@ class Setup(object):
 			print "I dont understand."
 			Setup().jump(name, computer_name)
 		def jump_attempt(self, name, computer_name):
-        print "Attempting jump..."
-        randnum = random.choice("1", "2", "3")
-        if randnum = "1":
-            print "Powering Up"
-            print ">", 
-            time.sleep(0.3)
-            print ">", 
-            time.sleep(0.3)
-            print ">", 
-            time.sleep(0.3)
-            print ">", 
-            time.sleep(0.3)
-            print ">", 
-            time.sleep(0.3)
-            print ">", 
-            time.sleep(0.3)
-            print ">"
+			print "Attempting jump..."
+			randnum = random.choice("1", "2", "3")
+			if randnum = "1":
+				print "Powering Up"
+				print ">", 
+				time.sleep(0.3)
+				print ">", 
+				time.sleep(0.3)
+				print ">", 
+				time.sleep(0.3)
+				print ">", 
+				time.sleep(0.3)
+				print ">", 
+				time.sleep(0.3)
+				print ">", 
+				time.sleep(0.3)
+				print ">", 
+				time.sleep(0.3)
             
-        
-		
-
-			
 class Stars(object):
 	
 	def star1(self, name, computer_name):
