@@ -1,5 +1,6 @@
 import random
 from sys import exit
+import time
 				
 	
 
@@ -155,8 +156,27 @@ class Setup(object):
 			self.quit()	
 		else:
 			print "I dont understand."
-			Setup().jump(name, computer_name)
-		
+            Setup().jump(name, computer_name)
+        def jump_attempt(self, name, computer_name):
+        print "Attempting jump..."
+        randnum = random.choice("1", "2", "3")
+        if randnum = "1":
+            print "Powering Up"
+            print ">", 
+            time.sleep(0.3)
+            print ">", 
+            time.sleep(0.3)
+            print ">", 
+            time.sleep(0.3)
+            print ">", 
+            time.sleep(0.3)
+            print ">", 
+            time.sleep(0.3)
+            print ">", 
+            time.sleep(0.3)
+            print ">"
+            
+        
 		
 
 			
@@ -489,6 +509,7 @@ class Actions(object):
 	
 	def action3(self, name, computer_name):
 		print "WE HAVE BEEN HIT"
+        battle.attacked(name, computer_name)
 	def action4(self, name, computer_name):	
 		print "You discovered a piece of uranium, do you want to add it to the inventory?"
 		print "1. yes"
@@ -626,7 +647,7 @@ class Infiltrate(object):
 			print "The room is clear,%s, you can go in." % name
 				
 class Battle(object):
-	def atttacked(self, name, computer_name)
+	def attacked(self, name, computer_name)
 		print "There is a %s ship firing at us" % random_.alien()	
 		print "What do you want to do?"
 		print "1. fire at them"
@@ -635,15 +656,27 @@ class Battle(object):
 		answer = raw_input(">")
 		if answer == "1":
 			self.fire(name, computer_name)
+        elif answer == "2":
+            setup.jump_attempt(name, computer_name)
 	def fire(name, computer_name):
 			print "How many missiles do you want to fire?"
 			print "You have %s missiles." % inventory.missile_store(0, 0)
 			answer = raw_input(">")
 			number = random.randint(2, 6)
-			if answer >= number:
+			if answer >= number & answer <= inventory.missile_store(0, 0):
+                inventory.missile_store(0, answer)
 				print "The ship is no longer locked onto us. They have been destroyed."
 				print "They left behind %s missiles, %s uranium and %s scrap" % (inventory.missile_store(random.randint(0, 5), 0), inventory.uranium_store(random.randint(0, 4), 0), inventory.scrap_store(random.randint(0, 15), 0))
-				
+				print "Jumping..."
+                setup.jump(name, computer_name)
+            elif answer > inventory.missile_store(0, 0):
+                print "Not enough missiles in your inventory." 
+                self.fire(name, computer_name)
+            else:
+                print "You didn't fire enough missiles."
+                print "MISSILES LOCKING ON"
+                print "You float into the endless vacuum of space..."
+                setup.quit()
 					
 				
 
@@ -653,6 +686,6 @@ stars = Stars()
 actions = Actions()
 setup = Setup()
 infiltrate = Infiltrate()	
-		
+battle = Battle()		
 
 setup.game()
