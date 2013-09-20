@@ -658,8 +658,8 @@ class Battle(object):
 		elif answer == "3":
 			setup.quit()
 		else:
-        	print "I cannot compute that answer..."
-        	self.attacked(name, computer_name)
+			print "I cannot compute that answer..."
+			self.attacked(name, computer_name)
         	
 	def fire(name, computer_name):
 			print "How many missiles do you want to fire?"
