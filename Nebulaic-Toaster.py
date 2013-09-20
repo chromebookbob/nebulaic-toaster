@@ -653,7 +653,7 @@ class Battle(object):
 		answer = raw_input(">")
 		if answer == "1":
 			self.fire(name, computer_name)
-        elif answer == "2":
+		elif answer == "2":
             setup.jump_attempt(name, computer_name)
         elif answer == "3":
         	setup.quit()
