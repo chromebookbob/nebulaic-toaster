@@ -156,8 +156,8 @@ class Setup(object):
 			self.quit()	
 		else:
 			print "I dont understand."
-            Setup().jump(name, computer_name)
-        def jump_attempt(self, name, computer_name):
+			Setup().jump(name, computer_name)
+		def jump_attempt(self, name, computer_name):
         print "Attempting jump..."
         randnum = random.choice("1", "2", "3")
         if randnum = "1":
