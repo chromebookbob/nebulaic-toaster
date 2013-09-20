@@ -671,7 +671,7 @@ class Battle(object):
 				print "The ship is no longer locked onto us. They have been destroyed."
 				print "They left behind %s missiles, %s uranium and %s scrap" % (inventory.missile_store(random.randint(0, 5), 0), inventory.uranium_store(random.randint(0, 4), 0), inventory.scrap_store(random.randint(0, 15), 0))
 				print "Jumping..."
-                setup.jump(name, computer_name)
+				setup.jump(name, computer_name)
             elif answer > inventory.missile_store(0, 0):
                 print "Not enough missiles in your inventory." 
                 self.fire(name, computer_name)
