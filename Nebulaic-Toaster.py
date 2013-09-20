@@ -506,7 +506,7 @@ class Actions(object):
 	
 	def action3(self, name, computer_name):
 		print "WE HAVE BEEN HIT"
-        battle.attacked(name, computer_name)
+        Battle().attacked(name, computer_name)
 	def action4(self, name, computer_name):	
 		print "You discovered a piece of uranium, do you want to add it to the inventory?"
 		print "1. yes"
