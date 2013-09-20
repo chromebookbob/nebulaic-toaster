@@ -672,16 +672,14 @@ class Battle(object):
 				print "They left behind %s missiles, %s uranium and %s scrap" % (inventory.missile_store(random.randint(0, 5), 0), inventory.uranium_store(random.randint(0, 4), 0), inventory.scrap_store(random.randint(0, 15), 0))
 				print "Jumping..."
 				setup.jump(name, computer_name)
-            elif answer > inventory.missile_store(0, 0):
-                print "Not enough missiles in your inventory." 
-                self.fire(name, computer_name)
-            else:
-                print "You didn't fire enough missiles."
-                print "MISSILES LOCKING ON"
-                print "You float into the endless vacuum of space..."
-                setup.quit()
-					
-				
+			elif answer > inventory.missile_store(0, 0):
+				print "Not enough missiles in your inventory." 
+				self.fire(name, computer_name)
+			else:
+				print "You didn't fire enough missiles."
+				print "MISSILES LOCKING ON"
+				print "You float into the endless vacuum of space..."
+				setup.quit()
 
 inventory = Inventory()	
 random_ = Random()
