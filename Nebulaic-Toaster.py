@@ -654,10 +654,10 @@ class Battle(object):
 		if answer == "1":
 			self.fire(name, computer_name)
 		elif answer == "2":
-            setup.jump_attempt(name, computer_name)
-        elif answer == "3":
-        	setup.quit()
-        else:
+			setup.jump_attempt(name, computer_name)
+		elif answer == "3":
+			setup.quit()
+		else:
         	print "I cannot compute that answer..."
         	self.attacked(name, computer_name)
         	
