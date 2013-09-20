@@ -680,13 +680,13 @@ class Battle(object):
 				print "MISSILES LOCKING ON"
 				print "You float into the endless vacuum of space..."
 				setup.quit()
-
+battle = Battle()
 inventory = Inventory()	
 random_ = Random()
 stars = Stars()
 actions = Actions()
 setup = Setup()
 infiltrate = Infiltrate()	
-battle = Battle()		
+		
 
 setup.game()
