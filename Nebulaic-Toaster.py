@@ -663,7 +663,7 @@ class Battle(object):
 			print "I cannot compute that answer..."
 			self.attacked(name, computer_name)
         	
-	def fire(name, computer_name):
+	def fire(self, name, computer_name):
 			print "How many missiles do you want to fire?"
 			print "You have %s missiles." % inventory.missile_store(0, 0)
 			answer = raw_input(">")
