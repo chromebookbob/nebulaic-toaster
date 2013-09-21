@@ -39,7 +39,7 @@ class Inventory(object):
 		if self.missiles > 0:
 			return self.missiles
 		else:
-			return "NO MISSILES"			
+			return "NO MISSILES!"			
 
 
 class Random(object):
