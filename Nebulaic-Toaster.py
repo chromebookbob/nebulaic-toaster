@@ -564,41 +564,41 @@ class Infiltrate(object):
 			if guesses == 3:
 				x = random.randint(0, 6)
 				if x == 1:
-				print "We are recieving a transmission from the ship..."
-				print "DE-SCRAMBLING..."
-				print "Message: I can detect you trying to hack our teleport system."
-				print "I can help you, I am the ship's cook, if you make it worth my while"
-				print "I will tell you the password."
-				print "MESSAGE END"
-				print "Do you want to pay him scrap?"
-				print "1. yes"
-				print "2. no"
-				answer = raw_input(">")
-				if answer == "1":
-					print "We have %s scrap in the inventory." % inventory.scrap_store(0, 0)
-					print "How much do you want to pay him?"
-					ans = raw_input(">")
-					amount = random.randint(5, 25)
-					if ans > inventory.scrap_store(0, 0):
-						print "Not enough funds in account."
-						print "MESSAGE:"
-						print "I saw your payment bounce."
-						print "Scarper, before I tell the captain!"
-						print "MESSAGE END"
-						setup.jump(name, computer_name)
-					else:
-						if ans >= amount:
-							print "Transfer complete. You have %s scrap in your inventory." % inventory.scrap_store(0, ans)
+					print "We are recieving a transmission from the ship..."
+					print "DE-SCRAMBLING..."
+					print "Message: I can detect you trying to hack our teleport system."
+					print "I can help you, I am the ship's cook, if you make it worth my while"
+					print "I will tell you the password."
+					print "MESSAGE END"
+					print "Do you want to pay him scrap?"
+					print "1. yes"
+					print "2. no"
+					answer = raw_input(">")
+					if answer == "1":
+						print "We have %s scrap in the inventory." % inventory.scrap_store(0, 0)
+						print "How much do you want to pay him?"
+						ans = raw_input(">")
+						amount = random.randint(5, 25)
+						if ans > inventory.scrap_store(0, 0):
+							print "Not enough funds in account."
 							print "MESSAGE:"
-							print "The payment has come through, now, the password is:"
-							print "%s" % real
-						else:
-							print "Transfer complete. You have %s scrap in your inventory." % inventory.scrap_store(0, ans)
-							print "MESSAGE:"
-							print "That isn't enough! You have 10 seconds to jump before"
-							print "we open fire."
+							print "I saw your payment bounce."
+							print "Scarper, before I tell the captain!"
 							print "MESSAGE END"
 							setup.jump(name, computer_name)
+						else:
+							if ans >= amount:
+								print "Transfer complete. You have %s scrap in your inventory." % inventory.scrap_store(0, ans)
+								print "MESSAGE:"
+								print "The payment has come through, now, the password is:"
+								print "%s" % real
+							else:
+								print "Transfer complete. You have %s scrap in your inventory." % inventory.scrap_store(0, ans)
+								print "MESSAGE:"
+								print "That isn't enough! You have 10 seconds to jump before"
+								print "we open fire."
+								print "MESSAGE END"
+								setup.jump(name, computer_name)
 					
 			
 			
