@@ -546,11 +546,12 @@ class Infiltrate(object):
 		pirate = ["p", "i", "r", "a", "t", "e"]
 		space = ["s", "p", "a", "c", "e"]
 		communist = ["c", "o", "m", "m", "u", "n", "i", "s", "t"]
-		passwords = random.choice(elephant, pirate, space, communist)
-		password = [passwords, ";", "\\", "1", "9", "*", ">", "/", "#"]
+		passwords = [elephant, pirate, space, communist]
+		choose = random.choice(passwords)
+		password = [choose, ";", "\\", "1", "9", "*", ">", "/", "#"]
 		random.shuffle(password)
 		print ''.join([str(item) for item in password])
-		real = ''.join(passwords)
+		real = ''.join(choose)
 		guesses = 0
 		answer = raw_input(">")
 		while answer != real and guesses < 7:
