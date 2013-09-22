@@ -526,7 +526,7 @@ class Actions(object):
 		elif answer == "3":
 			Setup().quit()
 		else:
-			print " I didn't catch that, restarting sequence."
+			print "I didn't catch that, restarting sequence."
 			action4(name, computer_name)			
 				
 	# this next class is the infiltration series of stuff
