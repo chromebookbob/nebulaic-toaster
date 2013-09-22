@@ -542,10 +542,15 @@ class Infiltrate(object):
 		print "I have managed to get access to an encrypted version of the passcode."
 		print "You will have to unscramble the encryption to acess the teleport."
 		print "You have 7 guesses."
-		password = ["e", "l", "e", "p", "h", "a", "n", "t", ";", "\\", "1", "9", "*", ">", "/", "#"]
+		elephant = ["e", "l", "e", "p", "h", "a", "n", "t"]
+		pirate = ["p", "i", "r", "a", "t", "e"]
+		space = ["s", "p", "a", "c", "e"]
+		communist = ["c", "o", "m", "m", "u", "n", "i", "s", "t"]
+		passwords = random.choice(elephant, pirate, space, communist)
+		password = [passwords, ";", "\\", "1", "9", "*", ">", "/", "#"]
 		random.shuffle(password)
 		print ''.join([str(item) for item in password])
-		real = "elephant"
+		real = ''.join(passwords)
 		guesses = 0
 		answer = raw_input(">")
 		while answer != real and guesses < 7:
