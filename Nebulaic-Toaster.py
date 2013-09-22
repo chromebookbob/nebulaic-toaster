@@ -132,6 +132,12 @@ class Setup(object):
 		if answer == "1":
 			exit(0)
 		elif answer == "2":
+			minusscrap = inventory.scrap_store(0, 0)
+			minusmissiles = inventory.missile_store(0, 0)
+			minusuranium = inventory.uranium_store(0, 0)
+			inventory.missile_store(7, minusmissiles)
+			inventory.scrap_store(20, minusscrap)
+			inventory.uranium_store(7, minusuranium)
 			Setup().game()
 		else:
 			print "QUITTING"
