@@ -680,7 +680,7 @@ class Battle(object):
 			else:
 				print "You didn't fire enough missiles."
 				print "MISSILES LOCKING ON"
-				print "You float into the endless vacuum of space..."
+				print "You float into the endless vacuum of space......"
 				setup.quit()
 battle = Battle()
 inventory = Inventory()	
