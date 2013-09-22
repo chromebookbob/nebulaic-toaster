@@ -564,7 +564,6 @@ class Infiltrate(object):
 			if guesses == 3:
 				x = random.randint(0, 6)
 				if x == 1:
-					
 				print "We are recieving a transmission from the ship..."
 				print "DE-SCRAMBLING..."
 				print "Message: I can detect you trying to hack our teleport system."
