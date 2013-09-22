@@ -549,7 +549,7 @@ class Infiltrate(object):
 		passwords = [elephant, pirate, space, communist]
 		choose = random.choice(passwords)
 		password = [ ";", "\\", "1", "9", "*", ">", "/", "#"]
-		password.append(choose)
+		password.extend(choose)
 		random.shuffle(password)
 		print ''.join([str(item) for item in password])
 		real = ''.join(choose)
