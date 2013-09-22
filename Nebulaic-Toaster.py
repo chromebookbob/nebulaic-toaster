@@ -184,9 +184,9 @@ class Setup(object):
 			time.sleep(0.3)
 			print ">", 
 			time.sleep(0.3)
-            print "JUMPING"
-            inventory.uranium_store(0, 2)
-            print "2 Uranium used."
+			print "JUMPING"
+			inventory.uranium_store(0, 2)
+			print "2 Uranium used."
 			random_.starfar(name, computer_name)
 		if randnum == "2":
 			print "powering up"
