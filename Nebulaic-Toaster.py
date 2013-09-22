@@ -165,26 +165,61 @@ class Setup(object):
 		else:
 			print "I dont understand."
 			Setup().jump(name, computer_name)
-		def jump_attempt(self, name, computer_name):
-			print "Attempting jump..."
-			randnum = random.choice("1", "2", "3")
-			if randnum == "1":
-				print "Powering Up"
-				print ">", 
-				time.sleep(0.3)
-				print ">", 
-				time.sleep(0.3)
-				print ">", 
-				time.sleep(0.3)
-				print ">", 
-				time.sleep(0.3)
-				print ">", 
-				time.sleep(0.3)
-				print ">", 
-				time.sleep(0.3)
-				print ">", 
-				time.sleep(0.3)
-            
+	def jump_attempt(self, name, computer_name):
+		print "Attempting jump..."
+		randnum = random.choice("1", "2", "3")
+		if randnum == "1":
+			print "Powering Up"
+			print ">", 
+			time.sleep(0.3)
+			print ">", 
+			time.sleep(0.3)
+			print ">", 
+			time.sleep(0.3)
+			print ">", 
+			time.sleep(0.3)
+			print ">", 
+			time.sleep(0.3)
+			print ">", 
+			time.sleep(0.3)
+			print ">", 
+			time.sleep(0.3)
+            print "JUMPING"
+            inventory.uranium_store(0, 2)
+            print "2 Uranium used."
+			random_.starfar(name, computer_name)
+		if randnum == "2":
+			print "powering up"
+			print ">", 
+			time.sleep(0.2)
+			print ">", 
+			time.sleep(0.5)
+			print ">", 
+			time.sleep(0.4)
+			print ">"
+			time.sleep(1)
+			print "ENGINES SHUTTING DOWN"
+			print "You and your ship float into the endless reaches of space."
+			self.quit()
+		if randnum == "3":
+			print "Powering Up"
+			print ">", 
+			time.sleep(0.1)
+			print ">", 
+			time.sleep(0.2)
+			print ">", 
+			time.sleep(0.2)
+			print ">", 
+			time.sleep(0.2)
+			print ">", 
+			time.sleep(0.2)
+			print ">", 
+			time.sleep(0.2)
+			print ">", 
+			time.sleep(0.2)
+			print "Jumping..."
+			self.jump(name, computer_name)
+			
 class Stars(object):
 	
 	def star1(self, name, computer_name):
