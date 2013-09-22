@@ -591,8 +591,15 @@ class Infiltrate(object):
 						if ans >= amount:
 							print "Transfer complete. You have %s scrap in your inventory." % inventory.scrap_store(0, ans)
 							print "MESSAGE:"
-							print "The payment has come through, now, the first four letters are:"
-							freeletters = choose
+							print "The payment has come through, now, the password is:"
+							print "%s" % real
+						else:
+							print "Transfer complete. You have %s scrap in your inventory." % inventory.scrap_store(0, ans)
+							print "MESSAGE:"
+							print "That isn't enough! You have 10 seconds to jump before"
+							print "we open fire."
+							print "MESSAGE END"
+							setup.jump(name, computer_name)
 					
 			
 			
