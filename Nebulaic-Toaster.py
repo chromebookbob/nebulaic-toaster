@@ -592,6 +592,7 @@ class Infiltrate(object):
 								print "MESSAGE:"
 								print "The payment has come through, now, the password is:"
 								print "%s" % real
+								pass
 							else:
 								print "Transfer complete. You have %s scrap in your inventory." % inventory.scrap_store(0, ans)
 								print "MESSAGE:"
@@ -599,7 +600,9 @@ class Infiltrate(object):
 								print "we open fire."
 								print "MESSAGE END"
 								setup.jump(name, computer_name)
-					
+								
+				else:	
+					pass
 			
 			
 			answer = raw_input(">")
