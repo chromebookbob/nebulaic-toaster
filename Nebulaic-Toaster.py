@@ -167,7 +167,8 @@ class Setup(object):
 			Setup().jump(name, computer_name)
 	def jump_attempt(self, name, computer_name):
 		print "Attempting jump..."
-		randnum = random.choice("1", "2", "3")
+		choices = ["1", "2", "3"]
+		randnum = random.choice(choices)
 		if randnum == "1":
 			print "Powering Up"
 			print ">", 
