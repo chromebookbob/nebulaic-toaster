@@ -1,5 +1,6 @@
 import random
 from sys import exit
+import time
 				
 	
 
@@ -38,7 +39,7 @@ class Inventory(object):
 		if self.missiles > 0:
 			return self.missiles
 		else:
-			return "NO MISSILES"			
+			return "NO MISSILES!"			
 
 
 class Random(object):
@@ -51,10 +52,12 @@ class Random(object):
 		random.choice(stars)(name, computer_name)	
 		
 	def coordinates(self):
+		#FIX DEGREE SIGN PROBLEM
+		degree_sign= u'\N{DEGREE SIGN}'
 		ac = random.uniform(-60, 60)
 		bc = random.uniform(-60, 60)
 		cc = random.uniform(-60, 60)
-		return u" %d\xb0 %d' %d\" " % (ac, bc, cc)	
+		return u" %d degrees %d' %d\" " % (ac, bc, cc)	
 		
 	def star(self):
 		star_list = ["ACAMAR", "ACHERNAR", "Achird", "ACRUX", "Acubens", "ADARA", "Adhafera", "Adhil", "AGENA", "Ain-al-Rami", "Ain", "Aladfar", "Alathfar", "Albaldah", "Albali", "ALBIREO", "Alchiba", "ALCOR", "ALCYONE", "ALDEBARAN", "ALDERAMIN", "Aldhibah", "Alfecca-Meridiana", "Alfirk", "ALGENIB", "ALGIEBA", "ALGOL", "Algorab", "ALHENA", "ALIOTH", "ALKAID", "Alkalurops", "Alkes", "Alkurhah", "ALMAAK", "ALNAIR", "ALNATH", "ALNILAM", "ALNITAK", "Alniyat", "Alniyat", "ALPHARD", "ALPHEKKA", "ALPHERATZ", "Alrai", "Alrisha", "Alsafi", "Alsciaukat", "ALSHAIN", "Alshat", "Alsuhail", "ALTAIR", "Altarf", "Alterf", "Aludra", "Alula-Australis", "Alula-Borealis", "Alya", "Alzirr", "Ancha", "Angetenar", "ANKAA", "Anser", "ANTARES", "ARCTURUS", "Arkab-Posterior", "Arkab-Prior", "ARNEB", "Arrakis", "Ascella", "Asellus Australis", "Asellus-Borealis", "Asellus-Primus", "Asellus-Secondus", "Asellus-Tertius", "Asterope", "Atik", "Atlas", "Auva", "Avior", "Azelfafage", "Azha", "Azmidiske", "Baham", "Baten Kaitos", "Becrux", "Beid", "BELLATRIX", "BETELGEUSE", "Botein", "Brachium", "CANOPUS", "CAPELLA", "Caph", "CASTOR", "Cebalrai", "Celaeno", "Chara", "Chort", "COR-CAROLI", "Cursa", "Dabih", "DENEB", "DENEBOLA", "Dheneb", "Diadem", "DIPHDA", "Double-Double-(7051)", "Dschubba", "Dsiban", "DUBHE", "Ed-Asich", "Electra", "ELNATH", "ENIF", "ETAMIN", "FOMALHAUT", "Fornacis", "Fum-al-Samakah", "Furud", "Gacrux", "Gianfar", "Gienah-Cygni", "Gienah-Ghurab", "Gomeisa", "Gorgonea-Quarta", "Gorgonea-Secunda", "Gorgonea-Tertia", "Graffias", "Grafias", "Grumium", "HADAR", "Haedi", "HAMAL", "Hassaleh", "Head-of-Hydrus", "Herschel's-Garnet Star", "Heze", "Hoedus-II", "Homam", "Hyadum-I", "Hyadum-II", "IZAR", "Jabbah", "Kaffaljidhma", "Kajam", "KAUS-AUSTRALIS", "Kaus-Borealis", "Kaus-Meridionalis", "Keid", "Kitalpha", "KOCAB", "Kornephoros", "Kraz", "Kuma", "Lesath", "Maasym", "Maia", "Marfak", "Marfak", "Marfic", "Marfik", "MARKAB", "Matar", "Mebsuta", "MEGREZ", "Meissa", "Mekbuda", "Menkalinan", "MENKAR", "Menkar", "Menkent", "Menkib", "MERAK", "Merga", "Merope", "Mesarthim", "Metallah", "Miaplacidus", "Minkar", "MINTAKA", "MIRA", "MIRACH", "Miram", "MIRPHAK", "MIZAR", "Mufrid", "Muliphen", "Murzim", "Muscida", "Muscida", "Muscida", "Nair-al-Saif", "Naos", "Nash", "Nashira", "Nekkar", "NIHAL", "Nodus-Secundus", "NUNKI", "Nusakan", "Peacock", "PHAD", "Phaet", "Pherkad Minor", "Pherkad", "Pleione", "Polaris-Australis", "POLARIS", "POLLUX", "Porrima", "Praecipua", "Prima Giedi", "PROCYON", "Propus", "Propus", "Propus", "Rana", "Ras-Elased-Australis", "Ras-Elased-Borealis", "RASALGETHI", "RASALHAGUE", "Rastaban", "REGULUS", "Rigel-Kentaurus", "RIGEL", "Rijl-al-Awwa", "Rotanev", "Ruchba", "Ruchbah", "Rukbat", "Sabik", "Sadalachbia", "SADALMELIK", "Sadalsuud", "Sadr", "SAIPH", "Salm", "Sargas", "Sarin", "Sceptrum", "SCHEAT", "Secunda-Giedi", "Segin", "Seginus", "Sham", "Sharatan", "SHAULA", "SHEDIR", "Sheliak", "SIRIUS", "Situla", "Skat", "SPICA", "Sterope-II", "Sualocin", "Subra", "Suhail-al-Muhlif", "Sulafat", "Syrma", "Tabit-(1543)", "Tabit-(1544)", "Tabit-(1552)", "Tabit-(1570)", "Talitha", "Tania-Australis", "Tania-Borealis", "TARAZED", "Taygeta", "Tegmen", "Tejat-Posterior", "Terebellum", "Terebellum", "Terebellum", "Terebellum", "Thabit", "Theemim", "THUBAN", "Torcularis-Septentrionalis", "Turais", "Tyl", "UNUKALHAI", "VEGA", "VINDEMIATRIX", "Wasat", "Wezen", "Wezn", "Yed-Posterior", "Yed-Prior", "Yildun", "Zaniah", "Zaurak", "Zavijah", "Zibal", "Zosma", "Zuben-Elakrab, Zuben-Elakribi, Zuben-Elgenubi, Zuben-Elschemali"]
@@ -129,6 +132,12 @@ class Setup(object):
 		if answer == "1":
 			exit(0)
 		elif answer == "2":
+			minusscrap = int(inventory.scrap_store(0, 0))
+			minusmissiles = int(inventory.missile_store(0, 0))
+			minusuranium = int(inventory.uranium_store(0, 0))
+			inventory.missile_store(7, minusmissiles)
+			inventory.scrap_store(20, minusscrap)
+			inventory.uranium_store(7, minusuranium)
 			Setup().game()
 		else:
 			print "QUITTING"
@@ -156,9 +165,60 @@ class Setup(object):
 		else:
 			print "I dont understand."
 			Setup().jump(name, computer_name)
-		
-		
-
+	def jump_attempt(self, name, computer_name):
+		print "Attempting jump..."
+		randnum = random.choice("1", "2", "3")
+		if randnum == "1":
+			print "Powering Up"
+			print ">", 
+			time.sleep(0.3)
+			print ">", 
+			time.sleep(0.3)
+			print ">", 
+			time.sleep(0.3)
+			print ">", 
+			time.sleep(0.3)
+			print ">", 
+			time.sleep(0.3)
+			print ">", 
+			time.sleep(0.3)
+			print ">", 
+			time.sleep(0.3)
+			print "JUMPING"
+			inventory.uranium_store(0, 2)
+			print "2 Uranium used."
+			random_.starfar(name, computer_name)
+		if randnum == "2":
+			print "powering up"
+			print ">", 
+			time.sleep(0.2)
+			print ">", 
+			time.sleep(0.5)
+			print ">", 
+			time.sleep(0.4)
+			print ">"
+			time.sleep(1)
+			print "ENGINES SHUTTING DOWN"
+			print "You and your ship float into the endless reaches of space."
+			self.quit()
+		if randnum == "3":
+			print "Powering Up"
+			print ">", 
+			time.sleep(0.1)
+			print ">", 
+			time.sleep(0.2)
+			print ">", 
+			time.sleep(0.2)
+			print ">", 
+			time.sleep(0.2)
+			print ">", 
+			time.sleep(0.2)
+			print ">", 
+			time.sleep(0.2)
+			print ">", 
+			time.sleep(0.2)
+			print "Jumping..."
+			self.jump(name, computer_name)
 			
 class Stars(object):
 	
@@ -489,6 +549,7 @@ class Actions(object):
 	
 	def action3(self, name, computer_name):
 		print "WE HAVE BEEN HIT"
+		battle.attacked(name, computer_name)
 	def action4(self, name, computer_name):	
 		print "You discovered a piece of uranium, do you want to add it to the inventory?"
 		print "1. yes"
@@ -506,7 +567,7 @@ class Actions(object):
 		elif answer == "3":
 			Setup().quit()
 		else:
-			print " I didn't catch that, restarting sequence."
+			print "I didn't catch that, restarting sequence."
 			action4(name, computer_name)			
 				
 	# this next class is the infiltration series of stuff
@@ -517,21 +578,74 @@ class Infiltrate(object):
 		print "without them noticing but there is a passcode."
 		print "You will have to hack into their computer systems and open the firewall."
 		self.hack(name, computer_name)
-		
+	
+
+	
 	def hack(self, name, computer_name):
 		print "I have managed to get access to an encrypted version of the passcode."
 		print "You will have to unscramble the encryption to acess the teleport."
 		print "You have 7 guesses."
-		password = ["e", "l", "e", "p", "h", "a", "n", "t", ";", "\\", "1", "9", "*", ">", "/", "#"]
+		elephant = ["e", "l", "e", "p", "h", "a", "n", "t"]
+		pirate = ["p", "i", "r", "a", "t", "e"]
+		space = ["s", "p", "a", "c", "e"]
+		communist = ["c", "o", "m", "m", "u", "n", "i", "s", "t"]
+		passwords = [elephant, pirate, space, communist]
+		choose = random.choice(passwords)
+		password = [ ";", "\\", "1", "9", "*", ">", "/", "#"]
+		password.extend(choose)
 		random.shuffle(password)
 		print ''.join([str(item) for item in password])
-		real = "elephant"
+		real = ''.join(choose)
 		guesses = 0
 		answer = raw_input(">")
 		while answer != real and guesses < 7:
 			guesses += 1
 			ggs = 7 - guesses
 			print "Wrong guess, %d left" % ggs
+			if guesses == 3:
+				x = random.randint(0, 6)
+				if x == 1:
+					print "We are recieving a transmission from the ship..."
+					print "DE-SCRAMBLING..."
+					print "Message: I can detect you trying to hack our teleport system."
+					print "I can help you, I am the ship's cook, if you make it worth my while"
+					print "I will tell you the password."
+					print "MESSAGE END"
+					print "Do you want to pay him scrap?"
+					print "1. yes"
+					print "2. no"
+					answer = raw_input(">")
+					if answer == "1":
+						print "We have %s scrap in the inventory." % inventory.scrap_store(0, 0)
+						print "How much do you want to pay him?"
+						ans = raw_input(">")
+						amount = random.randint(5, 25)
+						if ans > inventory.scrap_store(0, 0):
+							print "Not enough funds in account."
+							print "MESSAGE:"
+							print "I saw your payment bounce."
+							print "Scarper, before I tell the captain!"
+							print "MESSAGE END"
+							setup.jump(name, computer_name)
+						else:
+							if ans >= amount:
+								print "Transfer complete. You have %s scrap in your inventory." % inventory.scrap_store(0, ans)
+								print "MESSAGE:"
+								print "The payment has come through, now, the password is:"
+								print "%s" % real
+								pass
+							else:
+								print "Transfer complete. You have %s scrap in your inventory." % inventory.scrap_store(0, ans)
+								print "MESSAGE:"
+								print "That isn't enough! You have 10 seconds to jump before"
+								print "we open fire."
+								print "MESSAGE END"
+								setup.jump(name, computer_name)
+								
+				else:	
+					pass
+			
+			
 			answer = raw_input(">")
 		if answer == real:
 			print "You guessed the password!"
@@ -626,7 +740,7 @@ class Infiltrate(object):
 			print "The room is clear,%s, you can go in." % name
 				
 class Battle(object):
-	def atttacked(self, name, computer_name)
+	def attacked(self, name, computer_name):
 		print "There is a %s ship firing at us" % random_.alien()	
 		print "What do you want to do?"
 		print "1. fire at them"
@@ -635,18 +749,34 @@ class Battle(object):
 		answer = raw_input(">")
 		if answer == "1":
 			self.fire(name, computer_name)
-	def fire(name, computer_name):
+		elif answer == "2":
+			setup.jump_attempt(name, computer_name)
+		elif answer == "3":
+			setup.quit()
+		else:
+			print "I cannot compute that answer..."
+			self.attacked(name, computer_name)
+        	
+	def fire(self, name, computer_name):
 			print "How many missiles do you want to fire?"
 			print "You have %s missiles." % inventory.missile_store(0, 0)
-			answer = raw_input(">")
+			answer = int(raw_input(">"))
 			number = random.randint(2, 6)
-			if answer >= number:
+			if answer >= number and answer <= inventory.missile_store(0, 0):
+				inventory.missile_store(0, answer)
 				print "The ship is no longer locked onto us. They have been destroyed."
 				print "They left behind %s missiles, %s uranium and %s scrap" % (inventory.missile_store(random.randint(0, 5), 0), inventory.uranium_store(random.randint(0, 4), 0), inventory.scrap_store(random.randint(0, 15), 0))
-				
-					
-				
-
+				print "Jumping..."
+				setup.jump(name, computer_name)
+			elif answer > inventory.missile_store(0, 0):
+				print "Not enough missiles in your inventory." 
+				self.fire(name, computer_name)
+			else:
+				print "You didn't fire enough missiles."
+				print "MISSILES LOCKING ON"
+				print "You float into the endless vacuum of space......"
+				setup.quit()
+battle = Battle()
 inventory = Inventory()	
 random_ = Random()
 stars = Stars()
