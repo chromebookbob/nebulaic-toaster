@@ -739,7 +739,67 @@ class Infiltrate(object):
 	def engine_room(self, name, computer_name):		
 			print "Scanning room for lifeforms."
 			print "The room is clear,%s, you can go in." % name
+			print "It seems that their engine is a UraniBus 900"
+			print "I am just searching for how to take out their engines."
+			print "It seems there are three wires behind the console , if you cut the right one "
+			print "it will disable their engines."
+			print "You see the wires. You have three options:"
+			print "1. Cut the red wire"
+			print "2. Cut the blue wire"
+			print "3. Cut the green wire"
+			wires = ["3", ,"2", "1"]
+			answer = raw_input('>')
+			wire = random.choice(wires)
+			if answer == wire:
+				print "You cut the right wire, the alarms haven't been set off."
+				print "Do you want to come back now? or would you like to explore the ship further?"
+				print "1. Teleport back"
+				print "2. Explore the ship"
 				
+			elif answer != wire:
+				print "You cut the wrong wire."
+				print "The alarm system has been set off."
+				print "You need to teleport back quickly!"
+				num = random.choice([1, 2])
+				if num = 1:
+					print ">"
+					time.sleep(0.2)
+					print ">"
+					time.sleep(0.2)
+					print ">"
+					time.sleep(0.2)
+					print ">"
+					time.sleep(0.2)
+					print ">"
+					time.sleep(0.2)
+					print ">"
+					time.sleep(0.2)
+					print ">"
+					time.sleep(0.2)
+					print "TELEPORTING..."
+					time.sleep(4)
+					print "You're back!"
+					print "JUMPING"
+					septu.jump(name, computer_name)
+				if num = 2:
+					
+					print ">"
+					time.sleep(0.2)
+					print ">"
+					time.sleep(0.2)
+					print ">"
+					time.sleep(0.2)
+					print ">"
+					time.sleep(0.2)
+					print ">"
+					time.sleep(0.2)
+					print ">"
+					time.sleep(0.2)
+					print ">"
+					time.sleep(0.2)
+					
+					
+			
 class Battle(object):
 	def attacked(self, name, computer_name):
 		print "There is a %s ship firing at us" % random_.alien()	
