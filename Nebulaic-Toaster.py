@@ -520,15 +520,7 @@ class Actions(object):
 			print "Quitting..."
 			Setup().quit()
 		elif answer == "4":
-			attempt = ["yes", "no"]
-			choice = random.choice(attempt)
-			if choice == "yes":
-				print "Attempt Succesful. Jumping..."
-				Setup().jump(name, computer_name)
-			if choice == "no":		
-				print "Jump insuccessful. Rockets locking on."
-				print "SHIP DESTROYED"
-				Setup().quit()
+			setup.jump_attempt(name, computer_name)
 	def action2(self, name, computer_name):
 		print "Captian, a ship has been on our radar for the last three jumps."
 		print "I think we are being followed, would you like to take action?"
@@ -747,7 +739,7 @@ class Infiltrate(object):
 			print "1. Cut the red wire"
 			print "2. Cut the blue wire"
 			print "3. Cut the green wire"
-			wires = ["3", ,"2", "1"]
+			wires = ["3" ,"2", "1"]
 			answer = raw_input('>')
 			wire = random.choice(wires)
 			if answer == wire:
@@ -755,13 +747,21 @@ class Infiltrate(object):
 				print "Do you want to come back now? or would you like to explore the ship further?"
 				print "1. Teleport back"
 				print "2. Explore the ship"
-				
+				answ = raw_input('>')
+				if answ == "1":
+					print "Teleporting...."
+					time.sleep(3)
+					print "You're back! The ship has gone off our heat sensor. They can't follow us anymore."
+					setup.jump(name, computer_name)
+				elif answ == "2":
+					infiltrate.explore(name, computer_name)
+					
 			elif answer != wire:
 				print "You cut the wrong wire."
 				print "The alarm system has been set off."
 				print "You need to teleport back quickly!"
 				num = random.choice([1, 2])
-				if num = 1:
+				if num == 1:
 					print ">"
 					time.sleep(0.2)
 					print ">"
@@ -781,7 +781,7 @@ class Infiltrate(object):
 					print "You're back!"
 					print "JUMPING"
 					septu.jump(name, computer_name)
-				if num = 2:
+				if num == 2:
 					
 					print ">"
 					time.sleep(0.2)
@@ -797,7 +797,18 @@ class Infiltrate(object):
 					time.sleep(0.2)
 					print ">"
 					time.sleep(0.2)
-					
+					print "BANG!"
+					print "You float into the abyss, without two of your limbs"
+					setup.quit()
+	
+	def explore(self, name, computer_name):
+		print "There is a corridoor outside."
+		print "1. Go left."
+		print "2. Go right."
+		answer = raw_input('>')
+		if answer == "1":
+			print "There is a door"
+	
 					
 			
 class Battle(object):
