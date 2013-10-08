@@ -780,7 +780,7 @@ class Infiltrate(object):
 					time.sleep(4)
 					print "You're back!"
 					print "JUMPING"
-					septu.jump(name, computer_name)
+					setup.jump(name, computer_name)
 				if num == 2:
 					
 					print ">"
