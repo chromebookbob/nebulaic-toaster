@@ -811,7 +811,7 @@ class Infiltrate(object):
 			print "The door is labelled 'The Bridge'"
 			print "Entering the bridge."
 			self.bridge(name, computer_name)
-		elif answer = = "2":
+		elif answer == "2":
 			print "The nearest door is the armoury."
 			print "1. Enter Armoury"
 			print "2. Travel on"
