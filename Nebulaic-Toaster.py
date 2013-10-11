@@ -808,7 +808,7 @@ class Infiltrate(object):
 		answer = raw_input('>')
 		if answer == "1":
 			print "It seems that there is a noise coming from down the corridoor."
-			print "The door is labelled 'The Bridge'
+			print "The door is labelled 'The Bridge'"
 			print "Entering the bridge."
 			self.bridge(name, computer_name)
 		elif answer = = "2":
