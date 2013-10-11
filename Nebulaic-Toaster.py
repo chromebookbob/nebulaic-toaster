@@ -842,7 +842,7 @@ class Infiltrate(object):
 					
 			
 			
-	def Bridge(self, name computer_name):
+	def Bridge(self, name, computer_name):
 	
 					
 			
