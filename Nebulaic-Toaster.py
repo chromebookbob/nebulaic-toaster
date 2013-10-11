@@ -807,7 +807,42 @@ class Infiltrate(object):
 		print "2. Go right."
 		answer = raw_input('>')
 		if answer == "1":
-			print "There is a door"
+			print "It seems that there is a noise coming from down the corridoor."
+			print "The door is labelled 'The Bridge'.
+			print "Entering the bridge."
+			self.bridge(name, computer_name)
+		elif answer = = "2":
+			print "The nearest door is the armoury."
+			print "1. Enter Armoury"
+			print "2. Travel on"
+			print "3. Jump"
+			answer = raw_input(">")
+			if answer == "1":
+				self.armoury(name, computer_name)
+			elif answer == "2":
+				print "The corridoor is empty, bar a lonely jacket."
+				print "Search the jacket?"
+				print "1. Yes"
+				print "2. No, jump back to the ship."
+				ans = raw_input(">")
+				if ans == "1":
+					scrap = random.randint(20, 40)
+					print "There is a card with %d scrap on it." % scrap
+					print "Adding scrap..."
+					print "You now have %s scrap." % inventory.scrap_store(scrap, 0)
+					print "Teleporting back to ship..."
+					time.sleep(3)
+					print "You're back! Jumping..."
+					setup.jump(name, computer_name)
+					
+				else:
+					print "Jumping"
+					
+					setup.jump(name, computer_name)
+					
+			
+			
+	def Bridge(self, name computer_name):
 	
 					
 			
