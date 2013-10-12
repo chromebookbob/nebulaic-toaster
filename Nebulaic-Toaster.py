@@ -842,9 +842,73 @@ class Infiltrate(object):
 					
 			
 			
-	def Bridge(self, name, computer_name):
+	def bridge(self, name, computer_name):
+		print "There is one alien here."
+		print "He can't see you."
+		print "There is a console open to your left"
+		print "Do you want to:"
+		print "1. Log into the console."
+		print "2. Take out the alien"
+		print "3. Teleport abck to the ship"
+		answer = raw_input(">")
+		while answer == "":
+			answer = raw_input(">")
+		if answer == "1":
+			console.loading(name, computer_name, "infiltration")
+			
 	
-					
+	def armoury(self, name, computer_name):
+		pass
+
+
+class Console(object):
+	def loading(self, name, computer_name, console):
+		console = console
+		print """
+		___________________
+		===================
+		|     CONSOLE     |
+		|     LOADING     |
+		|.................|
+		===================
+		___________________
+		
+		
+		"""
+		time.sleep(3)
+		if console == "infiltration":
+			self.infiltration(name, computer_name)
+	
+	
+	def infiltration(self, name, computer_name):
+		print 
+		answer = raw_input("""
+		___________________
+		===================
+		| 1. Inventory    |
+		| 2. Weapons      |
+		| 3. Exit         |
+		===================
+		>
+		""")
+		if answer == "1":
+			number = random.randint(5, 40)
+			ans = raw_input("""
+		___________________
+		===================
+		| Scrap: %d       |
+		| 1.Transfer Scrap|
+		| 2.Quit          |
+		===================
+		>
+		""" % number)
+			if ans == "1":
+				print "Tranferring funds to card..."
+				time.sleep(2)
+				print "Exitting..."
+				print "%s, you now have %d scrap." % (name, number)
+				
+			
 			
 class Battle(object):
 	def attacked(self, name, computer_name):
@@ -891,5 +955,5 @@ actions = Actions()
 setup = Setup()
 infiltrate = Infiltrate()	
 		
-
+console = Console()
 setup.game()
