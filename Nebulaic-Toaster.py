@@ -855,6 +855,68 @@ class Infiltrate(object):
 			answer = raw_input(">")
 		if answer == "1":
 			console.loading(name, computer_name, "infiltration")
+		elif answer == "2":
+			print "You walk up behind the alien. What are you going to take out?"
+			print "1. TAKE OUT HIS LEGS!!!"
+			print "2. Hit his head."
+			ans = raw_input(">")
+			rans = random.choice(["1", "2"])
+			if ans == rans:
+				if ans == "1":
+					print "Well done! you took out his legs. He is finished"
+					
+				else:
+					print "Good decision, well executed."
+				print "The alien has a charge card on him. Adding scrap..."
+				scr = random.randint(5, 25)
+				print "The charge card had %d scrap on it. You now have: %s scrap."% (scr, inventory.scrap_store(scr, 0))
+				print "Teleporing back..."
+				time.sleep(3)
+				print "You are back safely, jumping..."
+				setup.jump(name, computer_name)
+			else:
+				print "The alien is knocked out, I will try and teleport you back."
+				num = random.choice([1, 2])
+				if num == 1:
+					print ">",
+					time.sleep(0.2),
+					print ">",
+					time.sleep(0.2),
+					print ">",
+					time.sleep(0.2),
+					print ">",
+					time.sleep(0.2),
+					print ">",
+					time.sleep(0.2),
+					print ">",
+					time.sleep(0.2),
+					print ">",
+					time.sleep(0.2),
+					print "TELEPORTING..."
+					time.sleep(4)
+					print "You're back!"
+					print "JUMPING"
+					setup.jump(name, computer_name)
+				if num == 2:
+					
+					print ">",
+					time.sleep(0.2),
+					print ">",
+					time.sleep(0.2),
+					print ">",
+					time.sleep(0.2),
+					print ">",
+					time.sleep(0.2),
+					print ">",
+					time.sleep(0.2),
+					print ">",
+					time.sleep(0.2),
+					print ">",
+					time.sleep(0.2),
+					print "BANG!"
+
+					
+			
 			
 	
 	def armoury(self, name, computer_name):
@@ -906,8 +968,24 @@ class Console(object):
 				print "Tranferring funds to card..."
 				time.sleep(2)
 				print "Exitting..."
-				print "%s, you now have %d scrap." % (name, number)
-				
+				print "%s, you now have %d scrap." % (name, inventory.scrap_store(number, 0))
+				print "I am teleporting you back before someone sees you!"
+				print "Teleporting..."
+				time.sleep(3)
+				print "You back, prepare to jump"
+				setup.jump(name, computer_name)
+			else:
+				print "I am teleporting you back now..."
+				time.sleep(3)
+				print "You're back safely. Jumping..."
+				setup.jump(name, computer_name)
+		elif answer == "2":
+			pass
+		else:
+			print "I am teleporting you back now..."
+			time.sleep(3)
+			print "You're back safely. Jumping..."
+			setup.jump(name, computer_name)
 			
 			
 class Battle(object):
